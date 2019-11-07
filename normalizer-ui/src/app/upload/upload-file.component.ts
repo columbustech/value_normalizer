@@ -90,8 +90,7 @@ export class UploadFileComponent implements OnInit {
       if (response instanceof HttpResponse) {
         const client_id = response.body.client_id;
         const redirect_uri = response.body.redirect_uri;
-        const auth_url = 'http://ad09282b27aca11e98ea412ac368fc7a-1539065101.us-east-1.elb.amazonaws.com/authentication/o/authorize/?response_type=code&client_id=' +
-          client_id + '&redirect_uri=' + redirect_uri + '&state=1234xyz';
+        const auth_url = 'https://authentication.columbusecosystem.com/o/authorize/?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirect_uri + '&state=1234xyz';
         window.location.href = auth_url;
       }
     });

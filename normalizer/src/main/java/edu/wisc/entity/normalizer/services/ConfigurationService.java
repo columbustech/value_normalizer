@@ -20,9 +20,9 @@ public class ConfigurationService {
     * The variables defined below are only used for development
     * They might change during production or need to be requested via an API
     */
-    public static String CLIENT_ID = "3l8f6m6aCbrK25JYQqbISe4ftORcYK0y8jnkZQkH";
-    public static String CLIENT_SECRET = "Uk0KdikMZQo1VpdW5mXVObAHX60Tet3xAvOWC5yOy3Le9v7aUaiiMPfRb96gW5JNlewExQOAAIx3rqcU3zLXfKGs1uR7lUYEccYjVgvTBBCtwVE15swH7oiE52QAcO6C";
-    public static String REDIRECT_URI = "https://value-normalizer.columbusecosystem.com/home/";
+    public static String CLIENT_ID = "cMKGvPgMZCWiOrjEa3rLdz5CV0gYtFi6tFpr1IbM";
+    public static String CLIENT_SECRET = "Nq9ubQ2KfJ5FYPZcX8OAqol0CHj8XGnO2pEBymVxfS7vv2rmwwYQngootYTuDieF6pupD5F00wz0aDu0ALvBYQSxnmUabjeqxiVrOCPRaB100EWSKkZ3m0nVFGI95tiT";
+    public static String REDIRECT_URI = "http://node0.cloudproject.cs744-s19-pg0.wisc.cloudlab.us:4200/value_normalizer";
     public static String AUTH_URL = "https://authentication.columbusecosystem.com/o/token/";
     /* End Development Variables
     */
