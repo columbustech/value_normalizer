@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <ul class="custom-control custom-checkbox"
+        style="column-count:2;column-gap:0;" >
+      <li style="float: left;clear: left; display: inline-block" *ngFor="let item of columnData | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+      <input type="checkbox" class="custom-control-input" id={{item.index}}
+             (change)="onCheckboxEvent($event, item)">
+      <label class="custom-control-label" for="{{item.index}}">
+        {{item.value}}</label></li>
+    </ul>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+
+  <div style="float: right;">
+<input type="button" (click)="merge()" value="Merge"
+       class="btn btn-primary btn-md"> &nbsp;
+<input type="button" *ngIf="p === totalPages" (click)="save()" value="Next"
+       class="btn btn-primary btn-md">
+    <div style="float: right;" >
+</div>

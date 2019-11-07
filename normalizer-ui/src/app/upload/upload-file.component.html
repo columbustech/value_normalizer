@@ -1,0 +1,31 @@
+<div class="container" >
+  <br/>
+  <br/>
+
+
+<div *ngIf="currentFileUpload" class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+       aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+    {{progress.percentage}}%</div>
+</div>
+  <H4 class="text-muted">Get File Local Computer</H4>
+<label class="btn btn-default">
+  <input type="file" (change)="selectFile($event)">
+</label>
+
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+<div>
+  <br>
+  <H4 class="text-muted">Get File from CDrive
+  <button class="btn btn-primary" (click)="redirectToCDrive()" *ngIf="!code"> Login via CDrive</button> </H4>
+  <div class="input-group mb-3" style="width: 500px;" *ngIf="code">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon3">File Name</span>
+    </div>
+    <input [(ngModel)]="url" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    &nbsp; &nbsp;
+    <button class="btn btn-success" [disabled]="!url || !token" (click)="getFromCDrive()">Get File</button>
+  </div>
+
+</div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container" >
+  <br/>
+  <br/>
+  <H4 class="text-muted">Download file to local computer</H4>
+  <button class="btn btn-success" (click)="download()">Download</button>
+  <div>
+    <br>
+    <H4 class="text-muted">Save file to CDrive</H4>
+    <div class="input-group mb-3" style="width: 500px;">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">File Name</span>
+      </div>
+      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="{{fileName}}" disabled>
+      &nbsp; &nbsp;
+      <button class="btn btn-success" [disabled]="!token" (click)="saveToCdrive()">Save File</button>
+    </div>
+    <br/>
+    {{message}}
+  </div>
+
+</div>

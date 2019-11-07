@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: normalizer-ui
+spec:
+  selector:
+    matchLabels:
+      name: normalizer-ui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: normalizer-ui
+    spec:
+      containers:
+        - name: normalizer-ui
+          image: "docker.io/kaushikc92/normalizer-ui:latest"

@@ -1,0 +1,13 @@
+.my_ul {
+  height: 60px;
+  display: flex;
+  flex-flow: column wrap;
+}
+.my_ul li {
+  float: left;
+  clear: left;
+  list-style: none;
+}
+.bold {
+  font-weight: bold;
+}

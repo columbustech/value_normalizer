@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: value-normalizer
+spec:
+  selector:
+    matchLabels:
+      name: value-normalizer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: value-normalizer
+    spec:
+      containers:
+        - name: value-normalizer
+          image: "docker.io/kaushikc92/normalizer:latest"
+          ports:
+            - name: http
+              containerPort: 8080

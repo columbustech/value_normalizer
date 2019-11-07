@@ -1,0 +1,13 @@
+<div class="container">
+  <br><br>
+<div *ngIf="!showCloumnData">
+<h2 class="text-muted"> Select a Column in {{fileName}} for normalizing </h2>
+
+    <select [(ngModel)]="selectedColumn">
+      <option *ngFor="let item of columnHeaders| keyvalue"
+              value={{item.key}}>{{item.value}}</option>
+    </select> &nbsp; <input type="button" (click)="getColumnKey(selectedColumn)" value="Select Column "
+                          class="btn btn-primary">
+</div>
+<column-data *ngIf="showCloumnData" [selectedColumn]="selectedColumn" [fileName]="fileName"></column-data>
+</div>

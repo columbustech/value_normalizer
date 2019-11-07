@@ -1,0 +1,43 @@
+<div>
+  <div *ngIf="columnData" class="custom-control custom-radio">
+    <table class="table table-condensed">
+      <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">{{columnData[index].key}}</th>
+        <th scope="col">{{columnData[index+1].key}}</th>
+        <th scope="col">{{columnData[index+2].key}}</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let ind of display | paginate: { itemsPerPage: itemsPerPage, currentPage: p, id:i}; let i=index">
+      <tr style="text-align:center" *ngIf="columnData[(i+(p-1)*itemsPerPage)+index+3]">
+        <th scope="row" ><label id="l-{{(i+(p-1)*itemsPerPage)+index+3}}">{{columnData[(i+(p-1)*itemsPerPage)+index+3].key}}</label></th>
+        <td>
+          <input type="radio" name="r-{{(i+(p-1)*itemsPerPage)+index+3}}" class="custom-control-input" id="{{(i+(p-1)*itemsPerPage)+index+3}}-{{index}}" (change)="onCheckboxEvent($event, index, (i+(p-1)*itemsPerPage)+index+3)">
+          <label class="custom-control-label custom-button" for="{{(i+(p-1)*itemsPerPage)+index+3}}-{{index}}">&nbsp;</label>
+        </td>
+        <td>
+          <input type="radio" name="r-{{(i+(p-1)*itemsPerPage)+index+3}}" class="custom-control-input " id="{{(i+(p-1)*itemsPerPage)+index+3}}-{{index+1}}" (change)="onCheckboxEvent($event, index+1, (i+(p-1)*itemsPerPage)+index+3)">
+          <label class="custom-control-label custom-button" for="{{(i+(p-1)*itemsPerPage)+index+3}}-{{index+1}}">&nbsp;</label>
+        </td>
+        <td>
+          <input type="radio" name="r-{{(i+(p-1)*itemsPerPage)+index+3}}" class="custom-control-input " id="{{(i+(p-1)*itemsPerPage)+index+3}}-{{index+2}}" (change)="onCheckboxEvent($event, index+2, (i+(p-1)*itemsPerPage)+index+3)">
+          <label class="custom-control-label custom-button" for="{{(i+(p-1)*itemsPerPage)+index+3}}-{{index+2}}">&nbsp; </label>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+
+  <div style="float: right;" >
+  <input type="button" (click)="merge()" value="Merge"
+         class="btn btn-primary btn-md"> &nbsp;
+  <input type="button" *ngIf="(p === totalPages || p > totalPages) && totalPages !== 1" (click)="next()" value="Next"
+         class="btn btn-primary btn-md"> &nbsp;
+  <input type="button" *ngIf="totalPages === 1" (click)="finish()" value="Finish"
+         class="btn btn-primary btn-md">
+  </div>
+</div>
+
