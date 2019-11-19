@@ -22,9 +22,9 @@ public class ConfigurationService {
     */
     public static String CLIENT_ID;
     public static String CLIENT_SECRET;
+
     //ToDo: Decide redirect URI. 
-    
-    public static String REDIRECT_URI = "localhost:4200/value_normalizer";
+    public static String REDIRECT_URI = "http://node0.cloudproject.cs744-s19-pg0.wisc.cloudlab.us:8001/upload";
     public static String AUTH_URL = "https://authentication.columbusecosystem.com/o/token/";
     /* End Development Variables
     */
@@ -36,8 +36,10 @@ public class ConfigurationService {
         } else {
             RESOURCE_LOCATION = LINUX_LOCATION;
         }
-        CLIENT_ID = System.getenv("COLUMBUS_CLIENT_ID");
-        CLIENT_SECRET = System.getenv("COLUMBUS_CLIENT_SECRET");
+        CLIENT_ID = "cMKGvPgMZCWiOrjEa3rLdz5CV0gYtFi6tFpr1IbM";
+	CLIENT_SECRET = "Nq9ubQ2KfJ5FYPZcX8OAqol0CHj8XGnO2pEBymVxfS7vv2rmwwYQngootYTuDieF6pupD5F00wz0aDu0ALvBYQSxnmUabjeqxiVrOCPRaB100EWSKkZ3m0nVFGI95tiT";
+	//CLIENT_ID = System.getenv("COLUMBUS_CLIENT_ID");
+        //CLIENT_SECRET = System.getenv("COLUMBUS_CLIENT_SECRET");
         System.out.println(WINDOWS_LOCATION);
         System.out.println(LINUX_LOCATION);
         System.out.println(RESOURCE_LOCATION);
