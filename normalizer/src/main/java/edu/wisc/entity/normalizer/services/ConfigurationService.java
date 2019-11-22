@@ -24,7 +24,7 @@ public class ConfigurationService {
     public static String CLIENT_SECRET;
 
     //ToDo: Decide redirect URI. 
-    public static String REDIRECT_URI = "http://node0.cloudproject.cs744-s19-pg0.wisc.cloudlab.us:8001/upload";
+    public static String REDIRECT_URI = "http://node0.cloudproject.cs744-s19-pg0.wisc.cloudlab.us:8000/upload";
     public static String AUTH_URL = "https://authentication.columbusecosystem.com/o/token/";
     /* End Development Variables
     */
