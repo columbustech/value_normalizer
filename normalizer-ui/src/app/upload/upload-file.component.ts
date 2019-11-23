@@ -57,7 +57,7 @@ export class UploadFileComponent implements OnInit {
       } else if (response instanceof HttpResponse) {
         const file = JSON.parse(response.body).file;
         console.log("Redirecting");
-        this.router.navigate(['/file/header/', file]);
+        this.router.navigate(['./file/header/', file]);
       } else if (response.type instanceof HttpErrorResponse) {
         console.log('Some Error occurred uploading');
       }
@@ -75,7 +75,7 @@ export class UploadFileComponent implements OnInit {
       } else if (response instanceof HttpResponse) {
         const file = JSON.parse(response.body).file;
         console.log("Redirecting");
-        this.router.navigate(['/file/header/', file]);
+        this.router.navigate(['./file/header/', file]);
       } else if (response.type instanceof HttpErrorResponse) {
         console.log('Some Error occurred uploading');
       }
