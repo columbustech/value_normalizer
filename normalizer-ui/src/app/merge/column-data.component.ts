@@ -77,7 +77,7 @@ export class ColumnDataComponent implements OnInit {
   save() {
     this.localMergeService.saveDiff(this.toMergeData, this.selectedColumn, this.fileName).subscribe((response: any) => {
       if (response instanceof HttpResponse) {
-        this.router.navigate(['/file/global', this.fileName, this.selectedColumn]);
+        this.router.navigate(['./file/global', this.fileName, this.selectedColumn]);
       } else if (response.type instanceof HttpErrorResponse) {
         console.log('Some Error occurred uploading');
       }
