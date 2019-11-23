@@ -119,6 +119,6 @@ export class GlobalMergeComponent implements OnInit {
   }
 
   finish() {
-    this.router.navigate(['/file/download', this.fileName]);
+    this.router.navigate(['./file/download', this.fileName]);
   }
 }
