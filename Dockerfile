@@ -1,10 +1,3 @@
-from ubuntu:18.04
-
-RUN apt-get update && apt-get install -y nginx
-COPY nginx.conf /etc/nginx/
-COPY frontend.conf /etc/nginx/conf.d
-COPY  normalizer-ui/dist/normalizer-ui/ /var/www/frontend/
-
 RUN apt-get update -y && apt-get install -y default-jre default-jdk vim git curl wget
 
 WORKDIR /maven
@@ -20,5 +13,10 @@ COPY ./ /code/
 
 WORKDIR /code/normalizer
 RUN mvn clean install
+
+RUN apt-get update && apt-get install -y nginx
+COPY nginx.conf /etc/nginx/
+COPY frontend.conf /etc/nginx/conf.d
+COPY  normalizer-ui/dist/normalizer-ui/ /var/www/frontend/
 
 CMD service nginx start && java -jar target/normalizer-0.0.1-SNAPSHOT.jar
