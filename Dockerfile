@@ -16,9 +16,9 @@ ENV M2_HOME /opt/maven
 ENV PATH $M2_HOME/bin:$PATH
 
 WORKDIR /code
-RUN git clone https://github.com/columbustech/value_normalizer.git
+COPY ./ /code/
 
-WORKDIR /code/value_normalizer/normalizer
+WORKDIR /code/normalizer
 RUN mvn clean install
 
 CMD service nginx start && java -jar target/normalizer-0.0.1-SNAPSHOT.jar
