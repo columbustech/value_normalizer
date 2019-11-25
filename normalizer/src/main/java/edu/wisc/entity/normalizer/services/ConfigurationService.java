@@ -39,7 +39,8 @@ public class ConfigurationService {
         }
 	String host_name = System.getenv("CDRIVE_URL");
 	String user_name = System.getenv("COLUMBUS_USERNAME");
-	REDIRECT_URI = host_name + "app/"+ user_name + "/" + APP_NAME +"/";
+	REDIRECT_URI = host_name + "app/"+ user_name + "/" + APP_NAME +"/upload";
+	//REDIRECT_URI = "http://node0.cloudproject.cs744-s19-pg0.wisc.cloudlab.us:8000/upload";
 	System.out.println(REDIRECT_URI);
         //CLIENT_ID = "cMKGvPgMZCWiOrjEa3rLdz5CV0gYtFi6tFpr1IbM";
 	//CLIENT_SECRET = "Nq9ubQ2KfJ5FYPZcX8OAqol0CHj8XGnO2pEBymVxfS7vv2rmwwYQngootYTuDieF6pupD5F00wz0aDu0ALvBYQSxnmUabjeqxiVrOCPRaB100EWSKkZ3m0nVFGI95tiT";

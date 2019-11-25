@@ -1,3 +1,5 @@
+FROM ubuntu:latest
+
 RUN apt-get update -y && apt-get install -y default-jre default-jdk vim git curl wget
 
 WORKDIR /maven
