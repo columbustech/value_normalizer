@@ -13,7 +13,7 @@ public class ConfigurationService {
     private static String WINDOWS_LOCATION="src/main/resources/csv/";
     private static String LINUX_LOCATION="/normalizer/csv/";
     public static String RESOURCE_LOCATION;
-    public static String CDRIVE_DOWNLOAD_URL="https://api.cdrive.columbusecosystem.com/download/?file_name=";
+    public static String CDRIVE_DOWNLOAD_URL="https://api.cdrive.columbusecosystem.com/download/?path=";
     public static String CDRIVE_UPLOAD_URL="https://api.cdrive.columbusecosystem.com/upload/";
 
     /* Start Development Variables
