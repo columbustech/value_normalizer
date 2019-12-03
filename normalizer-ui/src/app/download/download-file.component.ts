@@ -13,6 +13,7 @@ export class DownloadFileComponent implements OnInit {
   fileName: string;
   token: string;
   message : string;
+  uploadurl:string;
   constructor(private activeRoute: ActivatedRoute, private downloadFileService: DownloadFileService,
               private router: Router, private cookieService: CookieService) {
   }
@@ -28,7 +29,7 @@ export class DownloadFileComponent implements OnInit {
 
   saveToCdrive() {
     this.message = '';
-    this.downloadFileService.uploadFileToCdrive(this.fileName, this.token).subscribe( (response: any) => {
+    this.downloadFileService.uploadFileToCdrive(this.uploadurl, this.fileName, this.token).subscribe( (response: any) => {
       if (response.type instanceof HttpErrorResponse) {
         console.log('Some Error Saving File to Cdrive');
         this.message = 'Unable to store file!';
@@ -36,5 +37,7 @@ export class DownloadFileComponent implements OnInit {
         this.message = 'Successfully Saved File!';
       }
     });
+
+    this.uploadurl = undefined;
   }
 }

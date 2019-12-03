@@ -12,9 +12,9 @@ export class DownloadFileService {
     window.location.href = 'api/value_normalizer/file/download/' + fileName;
   }
 
-  uploadFileToCdrive(url: string, token: string): Observable<HttpEvent<{}>> {
+  uploadFileToCdrive(uploadurl: string, url: string, token: string,): Observable<HttpEvent<{}>> {
     console.log('url' + url);
-    const req = new HttpRequest('POST', 'api/value_normalizer/cdrive/upload?name=' + url + '&token=' + token, {
+    const req = new HttpRequest('POST', 'api/value_normalizer/cdrive/upload?name=' + url + '&token=' + token + '&uploadurl=' + uploadurl, {
       reportProgress: true,
       responseType: 'text'
     });

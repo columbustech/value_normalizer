@@ -10,7 +10,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon3">File Name</span>
       </div>
-      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="{{fileName}}" disabled>
+      <input [(ngModel)]="uploadurl" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
       &nbsp; &nbsp;
       <button class="btn btn-success" [disabled]="!token" (click)="saveToCdrive()">Save File</button>
     </div>

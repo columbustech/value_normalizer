@@ -73,11 +73,11 @@ public class FileViewController {
         }
     }
 
-    @PostMapping(value = "/cdrive/upload", params = {"name", "token"})
-    public ResponseEntity<String> uploadFileToCdrive(@RequestParam(value = "name") String file, @RequestParam(value = "token") String token) throws IOException, URISyntaxException {
+    @PostMapping(value = "/cdrive/upload", params = {"name", "token","uploadurl"})
+    public ResponseEntity<String> uploadFileToCdrive(@RequestParam(value = "name") String file, @RequestParam(value = "token") String token,@RequestParam(value = "uploadurl") String uploadUrl) throws IOException, URISyntaxException {
         String message = "";
         try {
-            cDriveService.uploadFile(file, token);
+            cDriveService.uploadFile(file, token,uploadUrl);
             message = "{\"file\":\"" + file + "\"}";
             return ResponseEntity.status(HttpStatus.OK).body(message);
         } catch (Exception e){

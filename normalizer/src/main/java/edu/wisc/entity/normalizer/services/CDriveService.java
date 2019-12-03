@@ -26,7 +26,7 @@ public class CDriveService {
         }
     }
 
-    public String uploadFile(String file, String token) {
+    public String uploadFile(String file, String token,String uploadUrl) {
         try {
             String cdriveUrl = ConfigurationService.CDRIVE_UPLOAD_URL;
             FileSystemResource fs = new FileSystemResource(ConfigurationService.RESOURCE_LOCATION + file);
@@ -37,7 +37,8 @@ public class CDriveService {
             headers.add("Authorization", "Bearer " + token);
             headers.setContentType(MediaType.MULTIPART_FORM_DATA);
             map.add("file", fs);
-
+            map.add("path",uploadUrl)
+            
             HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(map, headers);
             ResponseEntity<String> response = restTemplate.postForEntity(cdriveUrl, request, String.class);
 
