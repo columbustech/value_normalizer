@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import java.nio.file.Files;
+import java.io.File;
+import java.io.IOException;
+
 
 @Service
 public class CDriveService {
@@ -29,15 +33,26 @@ public class CDriveService {
     public String uploadFile(String file, String token,String uploadUrl) {
         try {
             String cdriveUrl = ConfigurationService.CDRIVE_UPLOAD_URL;
-            FileSystemResource fs = new FileSystemResource(ConfigurationService.RESOURCE_LOCATION + file);
+
+            uploadUrl = uploadUrl.replace("\\", "/");
+            String[] splittedFileName = uploadUrl.split("/"));
+            String simpleFileName = splittedFileName[splittedFileName.length-1];
+
+            File src = new File(ConfigurationService.RESOURCE_LOCATION + file);
+            File target = new File(ConfigurationService.RESOURCE_LOCATION+simpleFileName);
+
+            Files.copy(src.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+            FileSystemResource fsCopy = new FileSystemResource(ConfigurationService.RESOURCE_LOCATION + simpleFileName);
+    
             LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
             RestTemplate restTemplate = new RestTemplate();
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("Authorization", "Bearer " + token);
             headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-            map.add("file", fs);
-            map.add("path",uploadUrl)
+            map.add("file", fsCopy);
+            map.add("path",uploadUrl);
             
             HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(map, headers);
             ResponseEntity<String> response = restTemplate.postForEntity(cdriveUrl, request, String.class);
