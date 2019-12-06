@@ -35,7 +35,7 @@ public class CDriveService {
             String cdriveUrl = ConfigurationService.CDRIVE_UPLOAD_URL;
 
             uploadUrl = uploadUrl.replace("\\", "/");
-            String[] splittedFileName = uploadUrl.split("/"));
+            String[] splittedFileName = uploadUrl.split("/");
             String simpleFileName ;
             if (splittedFileName.length > 0){
                 simpleFileName = splittedFileName[splittedFileName.length-1];
@@ -56,10 +56,18 @@ public class CDriveService {
             HttpHeaders headers = new HttpHeaders();
             headers.add("Authorization", "Bearer " + token);
             headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+            String outputPath = "";
+            for( int i = 0; i < splittedFileName.length-1; i++)
+            {
+                outputPath += splittedFileName[i];
+                if (i < splittedFileName.length - 2){
+                    outputPath += "/";
+                }
+            }
 
             map.add("file", fsCopy);
 
-            map.add("path",uploadUrl);
+            map.add("path",outputPath);
             
             HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(map, headers);
             ResponseEntity<String> response = restTemplate.postForEntity(cdriveUrl, request, String.class);
