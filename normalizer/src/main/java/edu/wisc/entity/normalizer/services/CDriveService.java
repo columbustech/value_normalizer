@@ -36,13 +36,18 @@ public class CDriveService {
 
             uploadUrl = uploadUrl.replace("\\", "/");
             String[] splittedFileName = uploadUrl.split("/"));
-            String simpleFileName = splittedFileName[splittedFileName.length-1];
+            String simpleFileName ;
+            if (splittedFileName.length > 0){
+                simpleFileName = splittedFileName[splittedFileName.length-1];
+                File src = new File(ConfigurationService.RESOURCE_LOCATION + file);
+                File target = new File(ConfigurationService.RESOURCE_LOCATION+simpleFileName);
 
-            File src = new File(ConfigurationService.RESOURCE_LOCATION + file);
-            File target = new File(ConfigurationService.RESOURCE_LOCATION+simpleFileName);
+                Files.copy(src.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-            Files.copy(src.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
+            } else{
+                  simpleFileName = file;
+            }
+            
             FileSystemResource fsCopy = new FileSystemResource(ConfigurationService.RESOURCE_LOCATION + simpleFileName);
     
             LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
@@ -51,7 +56,7 @@ public class CDriveService {
             HttpHeaders headers = new HttpHeaders();
             headers.add("Authorization", "Bearer " + token);
             headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-            
+
             map.add("file", fsCopy);
 
             map.add("path",uploadUrl);
