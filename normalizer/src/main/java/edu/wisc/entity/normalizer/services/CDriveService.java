@@ -37,7 +37,7 @@ public class CDriveService {
             headers.add("Authorization", "Bearer " + token);
             headers.setContentType(MediaType.MULTIPART_FORM_DATA);
             map.add("file", fs);
-            map.add("path",uploadUrl)
+            map.add("path",uploadUrl);
             
             HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(map, headers);
             ResponseEntity<String> response = restTemplate.postForEntity(cdriveUrl, request, String.class);
