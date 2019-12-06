@@ -12,8 +12,7 @@ const routes: Routes = [
   { path: 'file/global/:name/:column', component: GlobalMergeComponent },
   { path: 'file/download/:name', component: DownloadFileComponent },
   { path: ':token', component: UploadFileComponent },
-  { path: '/', component: UploadFileComponent },
-  { path: '**', component: NotFoundComponent}
+  { path: '**', component: UploadFileComponent}
 ];
 
 @NgModule({
