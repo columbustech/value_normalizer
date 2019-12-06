@@ -51,7 +51,9 @@ public class CDriveService {
             HttpHeaders headers = new HttpHeaders();
             headers.add("Authorization", "Bearer " + token);
             headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+            
             map.add("file", fsCopy);
+
             map.add("path",uploadUrl);
             
             HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(map, headers);
